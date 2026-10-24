@@ -263,7 +263,9 @@ class BoxService(private val service: Service, private val platformInterface: Pl
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun serviceUpdateIdleMode() {
-        if (Application.powerManager.isDeviceIdleMode) {
+        val idle = Application.powerManager.isDeviceIdleMode
+        Log.w("BoxService", "device idle mode changed: $idle")
+        if (idle) {
             commandServer.pause()
         } else {
             commandServer.wake()

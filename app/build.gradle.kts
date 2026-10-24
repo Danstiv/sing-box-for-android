@@ -86,6 +86,7 @@ android {
 
     buildTypes {
         debug {
+            applicationIdSuffix = ".debug"
             if (getProps("KEYSTORE_PASS").isNotEmpty()) {
                 signingConfig = signingConfigs.getByName("release")
             }
